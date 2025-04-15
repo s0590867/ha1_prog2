@@ -37,6 +37,8 @@ public class Calculator {
     }
 
     /**
+     * Fehlende Funktion: es werden nicht zweistufig die Informationen gelöscht, sondern alle direkt gecleared
+     *
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
      * Einmaliges Drücken der Taste löscht die zuvor eingegebenen Ziffern auf dem Bildschirm
      * so dass "0" angezeigt wird, jedoch ohne zuvor zwischengespeicherte Werte zu löschen.
@@ -51,6 +53,8 @@ public class Calculator {
     }
 
     /**
+     * Fehlende Funktion: keine direkte Ausgabe des Zwischenergebnisses beim zweiten drücken
+     *
      * Empfängt den Wert einer gedrückten binären Operationstaste, also eine der vier Operationen
      * Addition, Substraktion, Division, oder Multiplikation, welche zwei Operanden benötigen.
      * Beim ersten Drücken der Taste wird der Bildschirminhalt nicht verändert, sondern nur der
@@ -109,6 +113,8 @@ public class Calculator {
     }
 
     /**
+     * Fehlende Funktion: Falls keine Operation gewählt wurde, wird eine IllegalArgumentException ausgelöst
+     *
      * Empfängt den Befehl der gedrückten "="-Taste.
      * Wurde zuvor keine Operationstaste gedrückt, passiert nichts.
      * Wurde zuvor eine binäre Operationstaste gedrückt und zwei Operanden eingegeben, wird das
