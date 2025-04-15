@@ -64,7 +64,25 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation)  {
-        latestValue = Double.parseDouble(screen);
+        if (!latestOperation.equals("")) {
+            double secondOperand = Double.parseDouble(screen);
+            double result;
+            switch (latestOperation) {
+                case "+" -> result = latestValue + secondOperand;
+                case "-" -> result = latestValue - secondOperand;
+                case "*" -> result = latestValue * secondOperand;
+                case "/" -> result = latestValue / secondOperand;
+                default -> throw new IllegalArgumentException();
+
+            }
+            screen = String.valueOf(result);
+            latestValue = result;
+
+            processResult();
+
+        } else {
+            latestValue = Double.parseDouble(screen);
+        }
         latestOperation = operation;
     }
 
@@ -137,6 +155,16 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
+        processResult();
+    }
+
+    /**
+     * Überarbeitet das ausgegebene Ergebnis so, das es optimal dargestellt wird.
+     * Wird "Infinity" ausgegeben, wird eine Fehlermeldung ausgegeben
+     * Endet das Ergebnis auf ".0", wird die 0 entfernt.
+     * Ist die Ausgabe größer als 11 Zeichen, wird die Ausgabe auf 10 Zeichen beschränkt
+     */
+    public void processResult() {
         if(screen.equals("Infinity")) screen = "Error";
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
