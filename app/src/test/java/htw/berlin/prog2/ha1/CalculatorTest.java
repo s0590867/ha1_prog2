@@ -104,7 +104,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should display the number without executing an operation")
+    @DisplayName("should display the number without executing an operation when pressing equals without selecting an operation")
     void testEqualsWithoutOperation() {
         Calculator calc = new Calculator();
 
@@ -114,6 +114,21 @@ class CalculatorTest {
         String expected = "2";
         String actual = calc.readScreen();
 
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should display intermediate result when pressing a binary operation the second time")
+    void testIntermediateResultForSecondBinaryOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressBinaryOperationKey("+");
+
+        String expected = "5";
+        String actual = calc.readScreen();
         assertEquals(expected, actual);
     }
 }
